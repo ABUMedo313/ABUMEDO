@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,113 +6,141 @@
   <style>
     body {
       font-family: 'Tahoma', sans-serif;
-      background-color: black;
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
       color: white;
+      background-color: black;
       margin: 0;
       padding: 0;
     }
-    .auth-box {
-      background-color: #1a1a1a;
-      max-width: 400px;
-      margin: 100px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    nav {
+      background-color: #111;
+      padding: 15px;
       text-align: center;
     }
-    input[type='email'], input[type='password'], input[type='text'] {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
     }
-    button {
+    .section {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+    .section.active {
+      display: block;
+    }
+    .product {
+      background-color: #222;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      width: 180px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .product button {
       background-color: #4f46e5;
       color: white;
-      padding: 10px 20px;
+      padding: 8px 15px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 8px;
     }
-    a {
-      color: #8888ff;
-      cursor: pointer;
+    .bg-control {
+      text-align: center;
+      margin: 20px;
+    }
+    input[type='text'] {
+      padding: 8px;
+      width: 300px;
+      border-radius: 6px;
+      border: none;
     }
   </style>
 </head>
 <body>
 
-<div class="auth-box" id="loginBox">
-  <h2>تسجيل الدخول</h2>
-  <input type="email" id="loginEmail" placeholder="الإيميل"><br>
-  <input type="password" id="loginPassword" placeholder="كلمة المرور"><br>
-  <button onclick="login()">دخول</button>
-  <p>ليس لديك حساب؟ <a onclick="showSignup()">إنشاء حساب جديد</a></p>
+<nav>
+  <a href="#home" onclick="showSection('home')">الرئيسية</a>
+  <a href="#cars" onclick="showSection('cars')">السيارات</a>
+  <a href="#ranks" onclick="showSection('ranks')">الرتب</a>
+  <a href="#guns" onclick="showSection('guns')">الأسلحة</a>
+</nav>
+
+<div id="home" class="section active">
+  <h1>مرحباً بك في سيرفر<br>ABU MEDO - MTA</h1>
+  <p>سيرفر احترافي يقدم لك تجربة لعب مميزة تشمل السيارات المعدلة، الرتب الخاصة، نظام اقتصادي متكامل، وأكثر.</p>
+
+  <p>ديسكورد السيرفر</p>
+  <a href="https://discord.gg/yourserver" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" width="40" height="40">
+  </a>
+
+  <p>قناتنا على اليوتيوب</p>
+  <a href="https://youtube.com/yourchannel" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="40" height="40">
+  </a>
+
+  
 </div>
 
-<div class="auth-box" id="signupBox" style="display:none;">
-  <h2>إنشاء حساب جديد</h2>
-  <input type="text" id="signupUsername" placeholder="اسم المستخدم"><br>
-  <input type="email" id="signupEmail" placeholder="الإيميل"><br>
-  <input type="password" id="signupPassword" placeholder="كلمة المرور"><br>
-  <button onclick="signup()">إنهاء الحساب</button>
-  <p>هل لديك حساب بالفعل؟ <a onclick="showLogin()">تسجيل الدخول</a></p>
+
+<div id="cars" class="section">
+  <h2>قسم السيارات</h2>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سيارة+1"><h3>سيارة 1</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سيارة+2"><h3>سيارة 2</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سيارة+3"><h3>سيارة 3</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سيارة+4"><h3>سيارة 4</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سيارة+5"><h3>سيارة 5</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
 </div>
 
-<!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+<div id="ranks" class="section">
+  <h2>قسم الرتب</h2>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=رتبة+1"><h3>رتبة 1</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=رتبة+2"><h3>رتبة 2</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=رتبة+3"><h3>رتبة 3</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=رتبة+4"><h3>رتبة 4</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=رتبة+5"><h3>رتبة 5</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+</div>
+
+<div id="guns" class="section">
+  <h2>قسم الأسلحة</h2>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سلاح+1"><h3>سلاح 1</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سلاح+2"><h3>سلاح 2</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سلاح+3"><h3>سلاح 3</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سلاح+4"><h3>سلاح 4</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+  <div class="product"><img src="https://via.placeholder.com/180x100.png?text=سلاح+5"><h3>سلاح 5</h3><button onclick="openDiscord()">شراء - افتح تذكرة</button></div>
+</div>
 
 <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyAVjLBCf08Lb_42S9-xJms8w5NY5TTgsLU",
-    authDomain: "abu-medo-store.firebaseapp.com",
-    projectId: "abu-medo-store",
-    storageBucket: "abu-medo-store.appspot.com",
-    messagingSenderId: "758200950302",
-    appId: "1:758200950302:web:fd2a4fd24f120d50ded80f",
-    measurementId: "G-2TRRD561Y0"
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function openDiscord() {
+    window.open('https://discord.gg/yourserver', '_blank');
+  }
+
+  function changeBackground() {
+    const url = document.getElementById('bg-url').value;
+    document.body.style.backgroundImage = 'url(' + url + ')';
+  }
+
+  window.onload = function () {
+    const hash = window.location.hash.substring(1);
+    if (hash) showSection(hash);
   };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
-  function showSignup() {
-    document.getElementById('loginBox').style.display = 'none';
-    document.getElementById('signupBox').style.display = 'block';
-  }
-
-  function showLogin() {
-    document.getElementById('signupBox').style.display = 'none';
-    document.getElementById('loginBox').style.display = 'block';
-  }
-
-  function signup() {
-    const email = document.getElementById("signupEmail").value;
-    const password = document.getElementById("signupPassword").value;
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        alert("تم إنشاء الحساب بنجاح!");
-        showLogin();
-      })
-      .catch((error) => {
-        alert("خطأ: " + error.message);
-      });
-  }
-
-  function login() {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-    auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        alert("تم تسجيل الدخول بنجاح!");
-        // Redirect or show logged-in content
-      })
-      .catch((error) => {
-        alert("خطأ: " + error.message);
-      });
-  }
 </script>
 
 </body>
